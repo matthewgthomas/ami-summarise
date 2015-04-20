@@ -69,9 +69,6 @@ calc_word_freq = function(word.freqs, num.words=10) {
 
 #######################################
 ## Calculate frequencies of most common words using term frequency–inverse document frequency (TF-IDF)
-##
-## The term frequency (TF) for each term in each article is word.freqs$count
-## This function calculates the IDF and outputs the top X words
 ## 
 ## Params:
 ## - word.freqs: data frame of word frequencies -- output from get_results()
