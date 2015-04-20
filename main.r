@@ -89,7 +89,7 @@ edges.words = freq.list[[2]]
 nodes.words = finalise_nodes(words.10, nodes)
 
 # save as a JSON file for the visualiser
-output_json(nodes.words, edges.words, "words.json")
+output_json(nodes.words, edges.words, "words.json", out.dir)
 
 #rm(nodes.words, edges.words)
 rm(words.10, freq.list)
@@ -106,7 +106,7 @@ edges.words = freq.list[[2]]
 nodes.words = finalise_nodes(words.tfidf, nodes)
 
 # save as a JSON file for the visualiser
-output_json(nodes.words, edges.words, "words_tdidf.json")
+output_json(nodes.words, edges.words, "words_tdidf.json", out.dir)
 
 
 #########################################################
@@ -130,7 +130,7 @@ edges.species = freq.list[[2]]
 nodes.species = finalise_nodes(nodes.species, nodes)
 
 # save
-output_json(nodes.species, edges.species, "species.json")
+output_json(nodes.species, edges.species, "species.json", out.dir)
 
 # cleanup
 rm(species.freqs, freq.list)
