@@ -147,6 +147,9 @@ finalise_nodes = function(nodes.freq, nodes.articles) {
   nodes.freq$url = ""  # no url for keywords
   nodes.freq$type = 1  # for keywords
   
+  # TF-IDF nodes sizes tend to be tiny. If the smallest keyword node < 1, set = 1
+  nodes.freq$size = ifelse(nodes.freq$size < 1, 1, nodes.freq$size)
+  
   nodes.freq = nodes.freq[, c(1, 3, 4, 5, 2) ]  # reorder columns
   nodes.out = rbind(nodes.freq, nodes)  # prepend keywords to articles
   
