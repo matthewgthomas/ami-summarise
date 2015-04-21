@@ -32,6 +32,9 @@
 ## SOFTWARE.
 ##
 
+# list of things to remove from word lists
+to_remove = c(".±.", "[],", "[].", "(.)", ".%)", "(.%,", "(.–.)", "(−.%,", "(.,", "−.%")
+
 #######################################
 ## Calculate frequencies of most common words
 ## 
@@ -49,7 +52,6 @@ calc_word_freq = function(word.freqs, num.words=10) {
   words.totals = ddply(word.freqs, .(word), summarise, total=sum(count))
   
   # get rid of some nonsense
-  to_remove = c('.±.','[],','[].')
   words.totals = subset(words.totals, !word %in% to_remove)
   
   # get top X most frequent words
@@ -101,7 +103,6 @@ calc_word_freq_tfidf = function(word.freqs, num.words=10) {
   word.freqs$TFIDF = word.freqs$TF * word.freqs$IDF
   
   # get rid of some nonsense
-  to_remove = c('.±.','[],','[].')
   word.freqs = subset(word.freqs, !word %in% to_remove)
   
   # get top X most frequent words, sorted by TF-IDF
