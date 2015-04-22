@@ -32,6 +32,8 @@
 ## SOFTWARE.
 ##
 
+#install.packages("plotrix", "RJSONIO", "XML")
+
 #########################################################
 ## Create list of nodes for the network viz.
 ## This function takes the JSON file produced by `getpapers` and outputs a dataframe of articles.
@@ -137,6 +139,8 @@ get_results = function(data.dir, xml.files, article_ids) {
 ## Returns: dataframe containing all keywords/species/etc. and all articles in a node list
 ##
 finalise_nodes = function(nodes.freq, nodes.articles) {
+  library(plotrix)
+  
   # set this variable to change the size of article nodes relative to keyword/species nodes
   # = 1 means that article nodes will be the same size as the smallest keyword/species
   relative_size_smallest_node = 1  # larger numbers mean smaller article nodes relative to smallest keyword/species
@@ -147,8 +151,8 @@ finalise_nodes = function(nodes.freq, nodes.articles) {
   nodes.freq$url = ""  # no url for keywords
   nodes.freq$type = 1  # for keywords
   
-  # TF-IDF nodes sizes tend to be tiny. If the smallest keyword node < 1, set = 1
-  nodes.freq$size = ifelse(nodes.freq$size < 1, 1, nodes.freq$size)
+  # the main summariser functions all output wildly different ranges of node sizes -- rescale them
+  nodes.freq$size = rescale(nodes.freq$size, range(10, 100))
   
   nodes.freq = nodes.freq[, c(1, 3, 4, 5, 2) ]  # reorder columns
   nodes.out = rbind(nodes.freq, nodes)  # prepend keywords to articles

@@ -32,6 +32,8 @@
 ## SOFTWARE.
 ##
 
+#install.packages("plyr")
+
 # list of things to remove from word lists
 to_remove = c(".±.", "[],", "[].", "(.)", ".%)", "(.%,", "(.–.)", "(−.%,", "(.,", "−.%", "():–.",
               "al.,", "al.", "Figure", "using", "used", "data", "results", "study", "studies")
