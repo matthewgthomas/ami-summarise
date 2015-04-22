@@ -58,6 +58,8 @@ source("funcs-species.r")  # for processing species lists
 data.dir = "path/to/papers"
 out.dir = "ami-viz/data"  # where to write the final JSON file(s)
 
+top.x.words = 20  # keep only the top X most frequent words
+
 # import data about downloaded papers
 nodes = load_papers(data.dir)
 
@@ -81,7 +83,7 @@ word.freqs$word = as.character(word.freqs$word)  # returned as a list by default
 word.freqs$count = as.integer(word.freqs$count)  # a list, by default
 
 # calculate top ten word frequencies and pull out keywords (as nodes) and the papers they connect to (edges)
-freq.list = calc_word_freq(word.freqs, 10)
+freq.list = calc_word_freq(word.freqs, top.x.words)
 words.10 = freq.list[[1]]
 edges.words = freq.list[[2]]
 
@@ -98,7 +100,7 @@ rm(words.10, freq.list)
 #########################################################
 ## Calculate word frequencies using term frequency - inverse document frequency (TF-IDF) method
 ##
-freq.list = calc_word_freq_tfidf(word.freqs, 20)
+freq.list = calc_word_freq_tfidf(word.freqs, top.x.words)
 words.tfidf = freq.list[[1]]
 edges.words = freq.list[[2]]
 
