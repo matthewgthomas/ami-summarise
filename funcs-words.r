@@ -33,7 +33,8 @@
 ##
 
 # list of things to remove from word lists
-to_remove = c(".±.", "[],", "[].", "(.)", ".%)", "(.%,", "(.–.)", "(−.%,", "(.,", "−.%")
+to_remove = c(".±.", "[],", "[].", "(.)", ".%)", "(.%,", "(.–.)", "(−.%,", "(.,", "−.%", "():–.",
+              "al.,", "al.", "Figure", "using", "used", "data", "results", "study", "studies")
 
 #######################################
 ## Calculate frequencies of most common words
